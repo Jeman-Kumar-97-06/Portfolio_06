@@ -1,1 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Monoton&family=Press+Start+2P&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
 @import 'tailwindcss';
+
+body {
+  font-family: 'VT323', monospace;
+  cursor: none;
+}
+
+.neon-cursor {
+  background: #39ff14;
+  box-shadow:
+    0 0 5px #39ff14,
+    0 0 10px #39ff14,
+    0 0 20px #00ff6f,
+    0 0 40px #00ff6f;
+  transition: transform 0.05s linear;
+}
+/*
+.bg-neon-green {
+  background-color: #39ff14;
+}
+
+.neon-line {
+  box-shadow:
+    0 0 5px #39ff14,
+    0 0 10px #39ff14,
+    0 0 20px #00ff6f,
+    0 0 40px #00ff6f;
+  transition: transform 0.04s linear, width 0.08s ease-out;
+} */
+
+  /* .bg-neon-green {
+    background-color: #39ff14;
+  } */
+
+.neon-text {
+  font-family: "Orbitron", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: bolder;
+  font-style: normal;
+  text-shadow:
+    0 0 5px #39ff14,
+    0 0 10px #39ff14,
+    0 0 20px #39ff14,
+    0 0 40px #00ff6f,
+    0 0 80px #00ff6f;
+  animation: flicker 3s infinite alternate;
+}
+
+@keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    opacity: 1;
+    text-shadow:
+      0 0 5px #39ff14,
+      0 0 10px #39ff14,
+      0 0 20px #39ff14,
+      0 0 40px #00ff6f,
+      0 0 80px #00ff6f;
+  }
+  20%, 24%, 55% {
+    opacity: 0.6;
+    text-shadow:
+      0 0 2px #39ff14,
+      0 0 4px #00ff6f;
+  }
+}

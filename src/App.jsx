@@ -1,67 +1,80 @@
 import { motion } from "framer-motion";
+import { useEffect,useState,useRef } from "react";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 
 const projects = [
   {
-    title: "Cool Project",
-    video: "",
-    description: "A short description of how this project works.",
+    title: "Code Visualizer",
+    video: "/videos/code-visualizer.webm",
+    description: "Visual tool that turns code into dynamic diagrams.",
   },
   {
-    title: "Another Project",
-    video: "",
-    description: "Another cool project with interesting features.",
+    title: "AI Assistant",
+    video: "/videos/ai-assistant.webm",
+    description: "Web-based assistant powered by transformers.",
   },
 ];
 
 const certifications = [
-  { name: "Full Stack Dev", url: "https://example.com/cert1" },
-  { name: "AI Basics", url: "https://example.com/cert2" },
+  { name: "Full Stack Developer - Meta", url: "https://example.com/cert1" },
+  { name: "TensorFlow Specialist", url: "https://example.com/cert2" },
 ];
-function App() {
+
+//The following shit is what you see on screen:
+export default function App() {
   return (
-    <div className="bg-black text-green-400 min-h-screen p-6 font-mono space-y-12">
+    <main className="bg-black text-green-400 min-h-screen font-mono px-4 py-10 space-y-20 relative overflow-hidden">
+      {/* Fake CRT scanlines overlay */}
+      <div className="absolute inset-0 pointer-events-none opacity-10 bg-[url('/scanlines.png')] z-10" />
+
       {/* Header */}
       <motion.header
-        initial={{ opacity: 0, y: -50 }}
+        initial={{ opacity: 0, y: -40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="text-center"
+        className="text-center z-20 relative"
       >
-        <h1 className="text-5xl font-bold border-b-2 border-green-400 inline-block pb-2">
-          Your Name
+        <h1 className="text-5xl font-bold pb-2 tracking-widest neon-text">
+          Jeman Kumar
         </h1>
       </motion.header>
 
       {/* About Me */}
       <motion.section
+        className="z-20 relative max-w-3xl mx-auto"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ delay: 0.2 }}
       >
-        <h2 className="text-2xl mb-2 underline">About Me</h2>
-        <p className="text-lg max-w-2xl">
-          I’m a full-stack developer who loves building creative tools and exploring retro aesthetics.
+        <h2 className="text-2xl underline mb-4 text-green-300">About Me</h2>
+        <p className="text-lg leading-relaxed">
+          Passionate full-stack developer focused on building intelligent web apps.
+          Lover of retro aesthetics, low-level computing, and AI tech. Currently hacking on MERN projects and contributing to open-source ARM-based Linux tools.
         </p>
       </motion.section>
 
       {/* Projects */}
       <motion.section
+        className="z-20 relative"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ delay: 0.3 }}
       >
-        <h2 className="text-2xl mb-4 underline">Projects</h2>
-        <div className="grid gap-6 md:grid-cols-2">
-          {projects.map((project, index) => (
+        <h2 className="text-2xl underline mb-4 text-green-300">Projects</h2>
+        <div className="grid md:grid-cols-2 gap-8">
+          {projects.map((project, idx) => (
             <motion.div
-              key={index}
-              className="border border-green-400 p-4 rounded-xl bg-black/40"
+              key={idx}
+              className="border border-green-400 bg-black/70 rounded-xl p-4 shadow-xl backdrop-blur hover:scale-105 transition-transform duration-300"
               whileHover={{ scale: 1.02 }}
             >
-              <video src={project.video} controls className="rounded mb-2" />
-              <h3 className="text-xl font-bold">{project.title}</h3>
-              <p>{project.description}</p>
+              <video
+                src={project.video}
+                controls
+                className="rounded mb-2 w-full"
+              />
+              <h3 className="text-xl font-semibold">{project.title}</h3>
+              <p className="text-sm">{project.description}</p>
             </motion.div>
           ))}
         </div>
@@ -69,19 +82,20 @@ function App() {
 
       {/* Certifications */}
       <motion.section
+        className="z-20 relative max-w-2xl mx-auto"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ delay: 0.4 }}
       >
-        <h2 className="text-2xl mb-2 underline">Certifications</h2>
-        <ul className="list-disc list-inside">
-          {certifications.map((cert, index) => (
-            <li key={index}>
+        <h2 className="text-2xl underline mb-4 text-green-300">Certifications</h2>
+        <ul className="list-disc list-inside space-y-1">
+          {certifications.map((cert, idx) => (
+            <li key={idx}>
               <a
                 href={cert.url}
+                className="hover:text-green-200 underline"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-green-300 underline hover:text-green-200"
               >
                 {cert.name}
               </a>
@@ -92,35 +106,21 @@ function App() {
 
       {/* Contact */}
       <motion.section
+        className="z-20 relative flex justify-center space-x-8 text-3xl"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ delay: 0.5 }}
-        className="flex justify-center gap-6 text-3xl"
       >
-        <a
-          href="mailto:youremail@example.com"
-          className="hover:text-green-200"
-          title="Email"
-        >
+        <a href="mailto:youremail@example.com" title="Email" className="hover:text-green-200">
           <FaEnvelope />
         </a>
-        <a
-          href="https://github.com/yourgithub"
-          className="hover:text-green-200"
-          title="GitHub"
-        >
+        <a href="https://github.com/yourhandle" title="GitHub" className="hover:text-green-200">
           <FaGithub />
         </a>
-        <a
-          href="https://linkedin.com/in/yourlinkedin"
-          className="hover:text-green-200"
-          title="LinkedIn"
-        >
+        <a href="https://linkedin.com/in/yourhandle" title="LinkedIn" className="hover:text-green-200">
           <FaLinkedin />
         </a>
       </motion.section>
-    </div>
-  )
+    </main>
+  );
 }
-
-export default App
