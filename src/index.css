@@ -5,18 +5,10 @@
 
 body {
   font-family: 'VT323', monospace;
-  cursor: none;
+  cursor:crosshair;
 }
 
-.neon-cursor {
-  background: #39ff14;
-  box-shadow:
-    0 0 5px #39ff14,
-    0 0 10px #39ff14,
-    0 0 20px #00ff6f,
-    0 0 40px #00ff6f;
-  transition: transform 0.05s linear;
-}
+
 /*
 .bg-neon-green {
   background-color: #39ff14;

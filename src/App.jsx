@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { useEffect,useState,useRef } from "react";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import CursorTrail from "./components/CursorTrail";
+
 
 const projects = [
   {
@@ -48,8 +50,7 @@ export default function App() {
       >
         <h2 className="text-2xl underline mb-4 text-green-300">About Me</h2>
         <p className="text-lg leading-relaxed">
-          Passionate full-stack developer focused on building intelligent web apps.
-          Lover of retro aesthetics, low-level computing, and AI tech. Currently hacking on MERN projects and contributing to open-source ARM-based Linux tools.
+        Aspiring Full Stack Developer with a strong MERN foundation, passionate about building responsive web apps. Enthusiastic problem-solver, always learning new frameworks to stay ahead. Eager to work as a part of a dynamic team
         </p>
       </motion.section>
 
@@ -65,7 +66,7 @@ export default function App() {
           {projects.map((project, idx) => (
             <motion.div
               key={idx}
-              className="border border-green-400 bg-black/70 rounded-xl p-4 shadow-xl backdrop-blur hover:scale-105 transition-transform duration-300"
+              className="border border-green-400 bg-black/70 p-4 shadow-xl backdrop-blur transition-transform duration-300"
               whileHover={{ scale: 1.02 }}
             >
               <video
@@ -121,6 +122,7 @@ export default function App() {
           <FaLinkedin />
         </a>
       </motion.section>
+
     </main>
   );
 }
